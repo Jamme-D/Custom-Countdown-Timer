@@ -14,6 +14,7 @@ const completeBtn = document.getElementById('complete-button');
 let countdownTitle = '';
 let countdownDate = '';
 let countdownValue = new Date();
+
 let countdownActive;
 let savedCountdown;
 
@@ -22,11 +23,14 @@ const minute = second * 60;
 const hour = minute * 60;
 const day = hour * 24;
 
+// Set timezone offset
+const localOffset = (-1) * countdownValue.getTimezoneOffset() * minute;
+
 // Set date input min w/ today's date
-const today = new Date().toISOString().split('T')[0];
+const today = new Date();
 dateEl.setAttribute('min', today);
 
-// This function populates the countdown and complete UI
+// This function populates the countdown and completes UI
 function updateDOM() {
     countdownActive = setInterval(() => {
     const now = new Date().getTime();
@@ -75,7 +79,7 @@ function updateCountdown(e) {
         alert('Please select a date for the countdown.');
     } else {
         // Get's number version of current Date and updates DOM
-        countdownValue = new Date(countdownDate).getTime();
+        countdownValue = new Date(countdownDate).getTime() - localOffset;
         updateDOM();
     }
 }
@@ -101,7 +105,7 @@ function restorePreviousCountdown() {
         savedCountdown = JSON.parse(localStorage.getItem('countdown'));
         countdownTitle = savedCountdown.title;
         countdownDate = savedCountdown.date;
-        countdownValue = new Date(countdownDate).getTime();
+        countdownValue = new Date(countdownDate).getTime() - localOffset;
         updateDOM();
     }
 }
