@@ -34,7 +34,7 @@ dateEl.setAttribute('min', today);
 function updateDOM() {
     countdownActive = setInterval(() => {
     const now = new Date().getTime();
-    const distance = countdownValue - now;
+    const distance = countdownValue - now  - localOffset;
 
     const days = Math.floor(distance / day);
     const hours = Math.floor((distance % day) / hour);
@@ -79,7 +79,7 @@ function updateCountdown(e) {
         alert('Please select a date for the countdown.');
     } else {
         // Get's number version of current Date and updates DOM
-        countdownValue = new Date(countdownDate).getTime() - localOffset;
+        countdownValue = new Date(countdownDate).getTime();
         updateDOM();
     }
 }
@@ -105,7 +105,7 @@ function restorePreviousCountdown() {
         savedCountdown = JSON.parse(localStorage.getItem('countdown'));
         countdownTitle = savedCountdown.title;
         countdownDate = savedCountdown.date;
-        countdownValue = new Date(countdownDate).getTime() - localOffset;
+        countdownValue = new Date(countdownDate).getTime();
         updateDOM();
     }
 }
