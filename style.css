@@ -83,6 +83,7 @@ input {
   border-radius: 20px;
   background: #fff;
   outline: none;
+  display: inline-block;
   font-family: 'Nunito', sans-serif;
 }
 
