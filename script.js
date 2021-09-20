@@ -49,7 +49,7 @@ function updateDOM() {
     console.log(distance);
 
     // If countdown has ended, show complete
-    if (distance < 0) {
+    if (distance <= 0) {
         countdownEl.hidden = true;
         clearInterval(countdownActive);
         completeElInfo.textContent = `${countdownTitle} finished on ${countdownDate}`;
