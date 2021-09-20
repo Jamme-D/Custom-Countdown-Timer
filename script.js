@@ -43,13 +43,8 @@ function updateDOM() {
     const minutes = Math.floor((distance % hour) / minute);
     const seconds = Math.floor((distance % minute) / second);
 
-    // Hide input
-    inputContainer.hidden = true;
-
-    console.log(distance);
-
     // If countdown has ended, show complete
-    if (distance <= 0) {
+    if (distance < 0) {
         countdownEl.hidden = true;
         clearInterval(countdownActive);
         completeElInfo.textContent = `${countdownTitle} finished on ${countdownDate}`;
@@ -66,6 +61,9 @@ function updateDOM() {
         countdownEl.hidden = false;
         }
     }, second);
+
+    // Hide input
+    inputContainer.hidden = true;
 }
 
 // Takes values from the input form
