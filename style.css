@@ -44,7 +44,7 @@ video {
   min-height: 304px;
   color: black;
   margin: 0 auto;
-  padding: 25px 50px;
+  padding: 50px 40px;
   border-radius: 5px;
   z-index: 2;
   display: flex;
@@ -55,6 +55,7 @@ video {
 .input-container {
   position: relative;
   top: 20px;
+  margin-top: -30px;
 }
 
 h1 {
@@ -87,7 +88,7 @@ input {
 
 /* Button */
 button {
-  width: 100%;
+  width: 98%;
   height: 40px;
   border-radius: 20px;
   margin-top: 15px;
@@ -175,10 +176,12 @@ li span {
     min-height: 245px;
     padding: 20px;
     margin: 10px;
+    align-items: center;
   }
 
   .input-container {
     top: unset;
+    margin-top: 0;
   }
 
   .countdown {
@@ -205,12 +208,21 @@ li span {
   li span {
     font-size: 40px;
   }
+
+  .complete {
+    position: relative;
+    top: 0;
+  }
 }
 
 /* Media Query: Narrower Smartphones (Vertical) */
 @media screen and (max-width: 360px) {
   li {
     font-size: 11px;
+  }
+
+  li span {
+    font-size: 28px;
   }
 }
 
@@ -221,6 +233,6 @@ li span {
   }
 
   li span {
-    font-size: 32px;
+    font-size: 24px;
   }
 }
